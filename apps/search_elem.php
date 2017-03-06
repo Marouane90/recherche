@@ -1,9 +1,9 @@
 <?php
 $bookManager = new BookManager($db);
-$book = $bookManager->search($_GET['search']);
+$books = $bookManager->search($_GET['search']);
 // liste de category => categories
-foreach ($book AS $index => $book)
+foreach ($books AS $index => $books)
 {
-	require ("views/search_book.phtml");
+	require ("views/search_elem.phtml");
 }
 ?>

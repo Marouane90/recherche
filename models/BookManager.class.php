@@ -8,40 +8,66 @@ class BookManager
 		$this->db=$db;
 	}
 
-	public function findById($id)
+	// public function findById($id)
+	// {
+	// 	$id=intval($id); 
+	// 	$res = mysqli_query($this->db, "SELECT * FROM books WHERE id='".$id."'");
+	// 	$books = mysqli_fetch_object($res, "books", [$this->db]); 
+	// 	return $books;
+	// }
+
+	public function search($name, $author, $country, $gender, $year, $editorial)
 	{
-		$id=intval($id); 
-		$res = mysqli_query($this->db, "SELECT * FROM books WHERE id='".$id."'");
-		$books = mysqli_fetch_object($res, "books", [$this->db]); 
-		return $books;
+		$request = "SELECT * FROM books WHERE";
+		if ($name != "")
+		{
+			$name = mysqli_real_escape_string($this->db, $name);
+			$request .= "name LIKE '%".$name."%' ";
+	    }
+	    if ($author != "")
+		{
+			$author = mysqli_real_escape_string($this->db, $author);
+			$request .= "author LIKE '%".$author."%' ";
+	    }
+	    if ($country != "")
+		{
+			$country = mysqli_real_escape_string($this->db, $country);
+			$request .= "country LIKE '%".$country."%' ";
+	    }
+	    if ($gender != "")
+		{
+			$gender = mysqli_real_escape_string($this->db, $gender);
+			$request .= "gender LIKE '%".$gender."%' ";
+	    }
+	    if ($year!= "")
+		{
+			$year = intval($year);
+			$request .= "year LIKE '%".$year."%' ";
+	    }
+	    if ($editorial != "")
+		{
+			$editorial = mysqli_real_escape_string($this->db, $editorial);
+			$request .= "editorial LIKE '%".$editorial."%' ";
+	    }
+        $request .= "ORDER BY name DESC";
+        $list=[];
+		$res = mysqli_query($this->db, $request);
+		while ($book = mysqli_fetch_object($res, "Book", [$this->db]))
+		{
+			$list[] = $book;
+		}
+		return $list;
 	}
 
-	public function search($search)
+	public function findGenders()
 	{
-		// $list = [];
-		$name = mysqli_real_escape_string($this->db, $books->getName());
-		$author = mysqli_real_escape_string($this->db, $books->getAuthor());
-		$country = mysqli_real_escape_string($this->db, $books->getCountry());
-		$gender = mysqli_real_escape_string($this->db, $books->getGender());
-		$year = intval($this->db, $books->getYear());
-		$editorial = mysqli_real_escape_string($this->db, $books->getEditorial());
-		$res = mysqli_query($this->db, "SELECT * FROM books WHERE name LIKE '%".$name."%' OR author LIKE '%".$author."%' OR country LIKE '%".$country."%' OR gender LIKE '%".$gender."%'OR year LIKE '%".$year."%' OR editorial LIKE '%".$editorial."%'");
-		// while($product = mysqli_fetch_object($res, "books", [$this->db]))
-		// {
-		// 	$list[] = $books;
-		// }
-		// return $list;
+		$list = [];
+		$res = mysqli_query($this->db, "SELECT gender FROM books GROUP BY gender ORDER BY gender");
+		while ($gender = mysqli_fetch_assoc($res))
+		{
+			$list[] = $gender['gender'];
+		}
+		return $list;
 	}
-	// public function findByAuthor($author)
-	// {
-	// 	$list = [];
-	// 	$author = mysqli_real_escape_string($this->db, $author);
-	// 	$res = mysqli_query($this->db, "SELECT * FROM books WHERE author='".$author."' ORDER BY author DESC");
-	// 	while ($author = mysqli_fetch_object($res, "books", [$this->db]))
-	// 	{
-	// 		$list[] = $author;
-	// 	}
-	// 	var_dump($author);
-	// 	return $list;
-	// }
 }
+	

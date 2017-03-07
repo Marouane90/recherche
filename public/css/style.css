@@ -1,4 +1,4 @@
-/*h1{
+h1{
 	color: red;
 	font-family: 'Italiana', serif;
 	font-size: 20px;
@@ -6,8 +6,10 @@
 }
 .col-md-1{
 	font-family: 'Nunito', sans-serif;
+	font-size: 15px;
 }
 .form-control{
 	width:300px;
-	font-size: 10px;
-}	*/
+	border: 1px solid grey;
+	padding: 10px 10px;
+}	

@@ -101,7 +101,6 @@ class BookManager
 			$list[] = $books;
 		}
 		return $list;
-
 	}
 }
 	

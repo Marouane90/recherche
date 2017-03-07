@@ -49,12 +49,13 @@ class BookManager
 			$editorial = mysqli_real_escape_string($this->db, $editorial);
 			$request .= "editorial LIKE '%".$editorial."%' ";
 	    }
+
         $request .= "ORDER BY name DESC";
         $list=[];
 		$res = mysqli_query($this->db, $request);
-		while ($book = mysqli_fetch_object($res, "Book", [$this->db]))
+		while ($books = mysqli_fetch_object($res, "Book", [$this->db]))
 		{
-			$list[] = $book;
+			$list[] = $books;
 		}
 		return $list;
 	}

@@ -1,6 +1,6 @@
 <?php
 
 $manager = new BookManager($db);
-$genders = $manager->findGenders();
+$gender = $manager -> findGenders();
 
 require('views/search.phtml');

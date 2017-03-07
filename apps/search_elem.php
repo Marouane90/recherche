@@ -1,9 +1,12 @@
 <?php
 $bookManager = new BookManager($db);
-// $books = $bookManager->search($_GET['search']);
+if (isset($_GET['name'], $_GET['author']))
+{
+	$list = $bookManager->search($_GET['name'], $_GET['author']);
+	foreach ($list AS $books)
+	{
+		require ("views/search_elem.phtml");		
+	}
+}
 // liste de category => categories
-// foreach ($books AS $index => $books)
-// {
-// 	require ("views/search_elem.phtml");
-// }
 ?>

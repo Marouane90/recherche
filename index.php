@@ -1,7 +1,7 @@
 <?php
 $errors = [];
 $page = "categories";
-$db = mysqli_connect("192.168.1.57","animaniax","animaniax","animaniax");
+$db = mysqli_connect("192.168.1.95","recherche","recherche","recherche");
 session_start();
 $access = ["search", "search_elem"];
 // if (isset($_GET['page']) && in_array($_GET['page'], $access))

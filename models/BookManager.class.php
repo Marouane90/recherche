@@ -28,12 +28,12 @@ class BookManager
 	    if ($price_min!= "")
 		{
 			$price_min = intval($price_min);
-			$request .= "AND price <= '".$price_min."' ";
+			$request .= "AND price >= '".$price_min."' ";
 	    }
 	    if ($price_max!= "")
 		{
 			$price_max = intval($price_max);
-			$request .= "AND price >= '".$price_max."' ";
+			$request .= "AND price <= '".$price_max."' ";
 	    }
 	    if ($year_min!= "")
 		{
@@ -74,7 +74,6 @@ class BookManager
         $request .= "ORDER BY name DESC";
         $list=[];
 		$res = mysqli_query($this->db, $request);
-		var_dump(mysqli_error($this->db));
 		while ($books = mysqli_fetch_object($res, "Book", [$this->db]))
 		{
 			$list[] = $books;
@@ -96,6 +95,7 @@ class BookManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM books ORDER BY gender DESC LIMIT 10");
+		var_dump(mysqli_error($this->db));
 		while ($books = mysqli_fetch_object($res, "Book", [$this->db]))
 		{
 			$list[] = $books;

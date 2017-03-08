@@ -5,25 +5,25 @@
 			<div class="form-group">
 				<label class="col-md-1 control-label" for="isbn">ISBN</label>
 				<div class="col-md-2">
-					<input id='search_input' type="text" class="form-control" id="isbn" placeholder="ISBN" name="isbn">
+					<input id='isbn' type="text" class="form-control" id="isbn" placeholder="ISBN" name="isbn">
 				</div>
 				<label class="col-md-1 control-label">Price</label>
 				<div class="col-md-1">
-					<input id='search_input' type="number" class="form-control" placeholder="Price Min" name="price_min">
+					<input id='price_min' type="number" class="form-control" placeholder="Price Min" name="price_min">
 				</div>
 				<div class="col-md-1">
-					<input id='search_input' type="number" class="form-control" placeholder="Price Max" name="price_max">
+					<input id='price_max' type="number" class="form-control" placeholder="Price Max" name="price_max">
 				</div>
 				<label class="col-md-1 control-label">Year</label>
 				<div class="col-md-1">
-					<input id='search_input' type="number" min="1980" max="2017" class="form-control" placeholder="Year Start" name="year_min">
+					<input id='year_min' type="number" min="1980" max="2017" class="form-control" placeholder="Year Start" name="year_min">
 				</div>
 				<div class="col-md-1">
-					<input id='search_input' type="number" min="1980" max="2017" class="form-control" placeholder="Year End" name="year_max">
+					<input id='year_max' type="number" min="1980" max="2017" class="form-control" placeholder="Year End" name="year_max">
 				</div>
 				<label class="col-md-1 control-label" for="gender">Gender</label>
 				<div class="col-md-2">
-					<select name="gender" class="form-control">
+					<select id='gender' name="gender" class="form-control">
 						<option value="">Select a gender</option>
 						<?php foreach ($genders AS $gender) : ?>
 							<option><?=$gender?></option>

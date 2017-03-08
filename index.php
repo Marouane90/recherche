@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-$page = "categories";
+$page = "search";
 $db = mysqli_connect("192.168.1.95","recherche","recherche","recherche");
 session_start();
 $access = ["search", "search_elem"];
@@ -13,7 +13,7 @@ function __autoload($classname)// http://php.net/manual/fr/function.autoload.php
 	require('models/'.$classname.'.class.php');
 }
 if (isset($_GET['ajax']))
-	require('apps/'.$page.'.php');
+	require('apps/'.$page.'_elem.php');
 else
 	require('apps/skel.php');
 ?>

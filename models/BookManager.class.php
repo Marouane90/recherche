@@ -22,7 +22,7 @@ class BookManager
 
 		if ($isbn!= "")
 		{
-			$isbn = mysqli_real_escape_string($isbn);
+			$isbn = mysqli_real_escape_string($this->db, $isbn);
 			$request .= " AND isbn LIKE '%".$isbn."%' ";
 	    }
 	    if ($price_min!= "")
@@ -71,7 +71,7 @@ class BookManager
 			$request .= "AND editorial LIKE '%".$editorial."%' ";
 	    }
 
-        $request .= "ORDER BY name DESC";
+        $request .= "ORDER BY name DESC LIMIT 50";
         $list=[];
 		$res = mysqli_query($this->db, $request);
 		while ($books = mysqli_fetch_object($res, "Book", [$this->db]))

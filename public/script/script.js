@@ -14,5 +14,7 @@ $(document).ready(function()
 		  var editorial = encodeURIComponent($('#editorial').val());
 
 		  $('#resultats').load("index.php?page=search_elem&ajax&isbn="+isbn+"&price_min="+price_min+"&price_max="+price_max+"&year_min="+year_min+"&year_max="+year_max+"&gender="+gender+"&name="+name+"&author="+author+"&country="+country+"&editorial="+editorial);
+		  
+		  history.pushState({}, "Recherche ", "index.php?page=search&isbn="+isbn+"&price_min="+price_min+"&price_max="+price_max+"&year_min="+year_min+"&year_max="+year_max+"&gender="+gender+"&name="+name+"&author="+author+"&country="+country+"&editorial="+editorial);
   	});
 });
